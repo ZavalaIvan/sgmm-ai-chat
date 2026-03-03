@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SGMM AI Chat
 
-## Getting Started
+Aplicacion web PWA tipo ChatGPT en Next.js para un unico dominio: Seguros de Gastos Medicos Mayores.
 
-First, run the development server:
+## Requisitos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 20 o superior
+- pnpm
+- `OPENAI_API_KEY` en `.env.local` para clasificador y generador con OpenAI
+
+## Configuracion
+
+Edita [`.env.local`](c:/Users/HP/Downloads/insurance-gpt/sgmm-ai-chat/.env.local) y agrega:
+
+```env
+OPENAI_API_KEY=tu_api_key
+OPENAI_MODEL=gpt-4o-mini
+NEXT_PUBLIC_ADVISOR_URL=https://wa.me/5219990000000?text=Necesito%20ayuda%20con%20mi%20SGMM
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`OPENAI_MODEL` y `NEXT_PUBLIC_ADVISOR_URL` son opcionales.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Correr en desarrollo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm dev
+```
 
-## Learn More
+Abre `http://localhost:3000`.
 
-To learn more about Next.js, take a look at the following resources:
+## Como probar
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Caso fuera de SGMM:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+Como invierto en bitcoin?
+```
 
-## Deploy on Vercel
+Resultado esperado:
+- El bot no responde de inversiones.
+- Redirige amablemente a SGMM.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Caso emergencia:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+Me duele el pecho y no puedo respirar
+```
+
+Resultado esperado:
+- Prioriza atencion inmediata.
+- No da diagnostico.
+- Orienta de forma general sobre tramites SGMM.
+
+Caso cotizacion:
+
+```text
+Quiero cotizar SGMM para mi familia en Merida
+```
+
+Resultado esperado:
+- Detecta interes hot.
+- Pide edad, ciudad y si es individual o familia.
+- Muestra CTA de cotizacion.
+
+## Build
+
+```bash
+pnpm build
+pnpm start
+```
+
+## Notas
+
+- Si no configuras `OPENAI_API_KEY`, la app sigue funcionando con reglas fallback locales.
+- El endpoint `POST /api/chat` valida payload con Zod.
+- La app persiste historial en `localStorage`.
+- La PWA no cachea respuestas del chat.
