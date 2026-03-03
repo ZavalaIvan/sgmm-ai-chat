@@ -182,6 +182,21 @@ export function ChatShell() {
     <div className="min-h-screen bg-[#343541] text-white">
       <div className="flex min-h-screen">
         <aside className="hidden w-[260px] flex-col border-r border-white/5 bg-[#202123] p-3 md:flex">
+          <div className="mb-4 rounded-xl border border-white/8 bg-[#26272d] px-4 py-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#19c37d] text-[#202123] shadow-[0_8px_24px_rgba(25,195,125,0.18)]">
+                <Bot className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold tracking-tight text-white">
+                  SGMM AI Chat
+                </p>
+                <p className="text-xs text-slate-400">
+                  Seguros de Gastos Medicos
+                </p>
+              </div>
+            </div>
+          </div>
           <nav className="mb-3 space-y-1">
             <Link
               className={`flex items-center gap-3 rounded-md px-4 py-3 text-sm transition ${
