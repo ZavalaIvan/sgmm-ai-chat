@@ -69,6 +69,16 @@ pnpm build
 pnpm start
 ```
 
+## Deploy en Vercel
+
+- El proyecto ya incluye [`vercel.json`](c:/Users/HP/Downloads/insurance-gpt/sgmm-ai-chat/vercel.json) para forzar `pnpm` y evitar conflictos por multiples lockfiles.
+- Configura en Vercel estas variables de entorno:
+  - `OPENAI_API_KEY`
+  - `OPENAI_MODEL` opcional
+  - `NEXT_PUBLIC_ADVISOR_URL` opcional
+- El deploy debe usar Node 20 o superior.
+- Comando de build esperado: `pnpm build`
+
 ## Notas
 
 - Si no configuras `OPENAI_API_KEY`, la app sigue funcionando con reglas fallback locales.
